@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import Modal from './Modal'; 
+import ElectricBoltTwoToneIcon from '@mui/icons-material/ElectricBoltTwoTone';
 
 const JobCard = ({ job }) => {
   const [modalOpen, setModalOpen] = useState(false); // State to control the modal
@@ -35,25 +36,35 @@ const JobCard = ({ job }) => {
         </p>
       )}
 
-      <p className='description'>
+        <p className='description'>
         <h2>About Company :</h2>
         <h3>About us </h3>
-        {job.jobDetailsFromCompany}
-      </p>
+        {job.jobDetailsFromCompany.length > 100 ? job.jobDetailsFromCompany.substring(0, 100) + '...' : job.jobDetailsFromCompany}
+        </p>
+        <p className='view-job-p'>
+            {job.jobDetailsFromCompany.length > 100 && <button className="view-job" onClick={openModal}>View Job</button>}
+        </p>
 
-      <button className="view-job" onClick={openModal}>View Job</button>
 
-      {/* Fullscreen modal */}
+
       <Modal isOpen={modalOpen} onClose={closeModal} job={job}>
         <span className="close" onClick={closeModal}>&times;</span>
         <h2>About Company :</h2>
         <h3>About us </h3>
-        <p>{job.jobDetailsFromCompany}</p>
+        <p>{job.jobDetailsFromCompany}
+        </p>
         <button className="apply-btn">Apply</button>
       </Modal>
 
-      {job.minExp && <p>Minimum Experience: {job.minExp} years</p>}
-      <button>Apply</button>
+        {job.minExp && 
+            <span>
+                <h2 className='exp'>Minimum Experience:</h2><p> {job.minExp} years</p>
+            </span>
+        }
+        <span className='apply-span'>
+            <button className='apply-btn'><ElectricBoltTwoToneIcon style={{ fontSize: '20px', verticalAlign: 'middle' }} className='lighting' />Easy Apply</button>
+        </span>
+        
     </div>
   );
 };
