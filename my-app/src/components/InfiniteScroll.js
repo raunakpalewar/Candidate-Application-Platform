@@ -16,7 +16,7 @@ const InfiniteScroll = ({ fetchMoreData, hasMore }) => {
     };
   }, [fetchMoreData]);
 
-  return <div ref={scrollRef}>{hasMore && <p>Loading...</p>}</div>;
+  return <div ref={scrollRef}>{hasMore && <p>...</p>}</div>;
 };
 
 export default InfiniteScroll;

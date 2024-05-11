@@ -21,7 +21,7 @@ const App = () => {
   // Fetch initial data
   useEffect(() => {
     // Fetch data from data.json file
-    fetch('/data/data.json')
+    fetch('/data.json')
       .then(response => response.json())
       .then(data => {
         setJobs(data.job);
