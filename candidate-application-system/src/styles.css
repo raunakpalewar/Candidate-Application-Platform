@@ -1,4 +1,4 @@
-
+/* 
 .job-card {
     width: 400px;
     border: 1px solid #ccc;
@@ -13,6 +13,7 @@
     border-radius: 5px;
     margin-bottom: 10px;
     max-width: 50px;
+    padding-bottom: 15px;
   }
   
   .job-card h2 {
@@ -43,6 +44,309 @@
     justify-content: space-around;
 
   }
-  .icon{
-    color:green;
+  .check-icon{
+    color:rgb(17, 205, 17);
+  }
+  .img-section{
+    display: flex;
+    flex-direction: row;
+  }
+  .name-role{
+    margin: 0 0 0 20px;
+  }
+.name-role h2{
+    color: grey;
+    font-size: 18px;
+    margin-top: 10px;
+    padding:0;
+    font-weight: 600;
+}
+.name-role h4{
+    color:black;
+    text-transform: capitalize;
+    font-size: 18px;
+    margin: 3px 0 0 0;
+    padding:0;
+    font-weight: 500;
+
+}
+.location{
+    font-size: 16px;
+    margin: 0;
+    padding:0;
+    text-transform: capitalize;
+}
+.salary{
+    color: rgb(131, 130, 130);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.icon{
+    text-align: end;
+    justify-content:end;
+    vertical-align: middle;
+}
+.description h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin:0;
+    padding:0;
+
+}
+.description h3{
+    font-size: 16px;
+    font-weight: 600;
+    margin:0 0 10px 0;
+    padding:0;
+}
+
+
+.load-more {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .apply-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .apply-btn:hover {
+    background-color: #0056b3;
+  }
+   */
+   
+
+
+   .job-card {
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+  }
+  
+  .job-card img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    max-width: 50px;
+    padding-bottom: 15px;
+  }
+  
+  .job-card h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .job-card p {
+    margin: 5px 0;
+  }
+  
+  .job-card button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .job-card button:hover {
+    background-color: #0056b3;
+  }
+  
+  .job-card .check-icon {
+    color: rgb(17, 205, 17);
+  }
+  
+  .job-card .img-section {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .job-card .name-role {
+    margin: 0 0 0 20px;
+  }
+  
+  .job-card .name-role h2 {
+    color: grey;
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 0;
+    font-weight: 600;
+  }
+  
+  .job-card .name-role h4 {
+    color: black;
+    text-transform: capitalize;
+    font-size: 18px;
+    margin: 3px 0 0 0;
+    padding: 0;
+    font-weight: 500;
+  }
+  
+  .job-card .location {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+  }
+  
+  .job-card .salary {
+    color: rgb(131, 130, 130);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  .job-card .icon {
+    text-align: end;
+    justify-content: end;
+    vertical-align: middle;
+  }
+  
+  .job-card .description h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .job-card .description h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    padding: 0;
+  }
+  
+  .job-card .load-more {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .job-card .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .job-card .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .job-card .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .job-card .close:hover,
+  .job-card .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .job-card .apply-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .job-card .apply-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    overflow-y: auto;
+    position: relative;
+    margin: auto; /* Center the modal horizontally */
+    margin-top: 10vh; /* Center the modal vertically */
+    padding: 20px; /* Add padding for space around the content */
+  }
+  
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
   }
