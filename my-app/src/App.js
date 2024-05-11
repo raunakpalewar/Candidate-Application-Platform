@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import JobCard from './components/JobCard';
 import JobFilters from './components/JobFilters';
 import InfiniteScroll from './components/InfiniteScroll';
-// import './styles.css';
+import './styles.css';
 
 const App = () => {
   const [jobs, setJobs] = useState([]);
