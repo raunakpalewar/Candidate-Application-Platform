@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import JobCard from './components/JobCard';
 import JobFilters from './components/JobFilters';
 import InfiniteScroll from './components/InfiniteScroll';
-import './styles.css';
+import data from './data.json';
+import './components/styles.css';
 
 const App = () => {
   const [jobs, setJobs] = useState([]);
@@ -11,43 +12,50 @@ const App = () => {
     minExperience: 0,
     company: '',
     location: '',
-    remote: false,
-    techStack: '',
+    remote: '',
+    onsite: '',
     role: '',
     minBasePay: 0,
   });
   const [hasMore, setHasMore] = useState(true);
 
-  // Fetch initial data
   useEffect(() => {
-    // Fetch data from data.json file
-    fetch('/data.json')
-      .then(response => response.json())
-      .then(data => {
-        setJobs(data.job);
-        setFilteredJobs(data.job);
-      })
-      .catch(error => console.error('Error fetching data:', error));
+    setJobs(data.job);
+    setFilteredJobs(data.job);
   }, []);
 
-  // Function to fetch more data for infinite scroll
   const fetchMoreData = () => {
-    // This is just a placeholder function, you need to implement your logic here
     console.log('Fetching more data...');
   };
 
-  // Function to apply filters
-  const applyFilters = () => {
-    // Implement filtering logic based on 'filters' state
-    // Update 'filteredJobs' state accordingly
-    console.log('Applying filters...');
+  const applyFilters = (appliedFilters) => {
+    setFilters(appliedFilters);
+  
+    const filtered = jobs.filter(job => {
+      const isRemote = job.location.toLowerCase().includes('remote');
+      const isOnsite = !isRemote;
+
+  
+      return (
+        (!appliedFilters.minExperience || job.minExp >= appliedFilters.minExperience) &&
+        (!appliedFilters.company || job.companyName.toLowerCase().includes(appliedFilters.company.toLowerCase())) &&
+        (!appliedFilters.location || job.location.toLowerCase().includes(appliedFilters.location.toLowerCase())) &&
+        (!appliedFilters.remote || job.location.toLowerCase().includes('remote')) &&
+        (!appliedFilters.onsite || isOnsite) &&
+        (!appliedFilters.role || job.jobRole.toLowerCase().includes(appliedFilters.role.toLowerCase())) &&
+        (!appliedFilters.minBasePay || job.minJdSalary >= appliedFilters.minBasePay)
+      );
+    });
+  
+    // Update the filteredJobs state with the filtered results
+    setFilteredJobs(filtered);
   };
 
   return (
     <div className="app">
-      <h1>Candidate Application Platform</h1>
+      <h1>Search Jobs</h1>
       <div className="filters-section">
-        <JobFilters />
+        <JobFilters applyFilters={applyFilters} />
       </div>
       <div className="job-cards-section">
         {filteredJobs.map(job => (

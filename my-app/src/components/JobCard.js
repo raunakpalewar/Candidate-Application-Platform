@@ -5,7 +5,7 @@ import Modal from './Modal';
 import ElectricBoltTwoToneIcon from '@mui/icons-material/ElectricBoltTwoTone';
 
 const JobCard = ({ job }) => {
-  const [modalOpen, setModalOpen] = useState(false); // State to control the modal
+  const [modalOpen, setModalOpen] = useState(false); 
 
   const openModal = () => {
     setModalOpen(true);

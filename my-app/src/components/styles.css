@@ -352,7 +352,13 @@
     color: #ccc;
     cursor: pointer;
   }
-  .job-filters input.active {
+  .job-filters input.active,
+  .job-filters select.active {
     color: black;
+    /* text-transform: uppercase; */
+    /* font-size: 18px; */
+    border-color: black;
+    box-shadow: 18px 16px 16px 3px rgba(0,0,0,0.1);
+
   }
   
