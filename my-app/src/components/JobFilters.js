@@ -17,9 +17,9 @@ const JobFilters = ({ applyFilters }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get('data.json');
-        const jobs = response.data.jobs;
-        const uniqueLocations = Array.from(new Set(jobs.map(job => job.location)));
-        const uniqueRoles = Array.from(new Set(jobs.map(job => job.jobRole)));
+        const jobs = response.data.job;
+        const uniqueLocations = Array.from(new Set(jobs.map(job => job.location.toUpperCase())));
+        const uniqueRoles = Array.from(new Set(jobs.map(job => job.jobRole.toUpperCase())));
         setLocations(uniqueLocations);
         setRoles(uniqueRoles);
       } catch (error) {
@@ -45,19 +45,35 @@ const JobFilters = ({ applyFilters }) => {
     applyFilters(filters);
   };
 
+  // Generate options for minimum experience
+  const minExpOptions = Array.from({ length: 10 }, (_, i) => i + 1);
+
+  // Generate options for minimum base pay
+  const minBasePayOptions = Array.from({ length: 10 }, (_, i) => (i + 1) * 10);
+
+  // Function to handle input change for Company Name
+  const handleCompanyNameChange = (e) => {
+    setCompanyName(e.target.value);
+    if (e.target.value.trim() !== '') {
+      e.target.classList.add('active');
+    } else {
+      e.target.classList.remove('active');
+    }
+  };
+
   return (
     <div className="job-filters">
-      <input
-        type="text"
-        placeholder="Minimum Experience"
-        value={minExp}
-        onChange={(e) => setMinExp(e.target.value)}
-      />
+      <select value={minExp} onChange={(e) => setMinExp(e.target.value)}>
+        <option value="">Select Minimum Experience</option>
+        {minExpOptions.map(value => (
+          <option key={value} value={value}>{value} years</option>
+        ))}
+      </select>
       <input
         type="text"
         placeholder="Company Name"
         value={companyName}
-        onChange={(e) => setCompanyName(e.target.value)}
+        onChange={handleCompanyNameChange}
       />
       <select value={location} onChange={(e) => setLocation(e.target.value)}>
         <option value="">Select Location</option>
@@ -78,10 +94,9 @@ const JobFilters = ({ applyFilters }) => {
       </select>
       <select value={minBasePay} onChange={(e) => setMinBasePay(e.target.value)}>
         <option value="">Select Min Base Pay</option>
-        <option value="0">0 LPA</option>
-        <option value="10">10 LPA</option>
-        <option value="20">20 LPA</option>
-        {/* Add more options as needed */}
+        {minBasePayOptions.map(value => (
+          <option key={value} value={value}>{value} LPA</option>
+        ))}
       </select>
       <button onClick={handleFilterChange}>Apply Filters</button>
     </div>
